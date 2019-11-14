@@ -87,8 +87,8 @@ autocmd StdinReadPre * let s:std_in=1
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 
-" most editors by default have this god awful habit of interfering with how i type.
-autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
+" no auto indenting
+filetype indent off
 
 " remember line last opened on
 if has("autocmd")
