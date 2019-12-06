@@ -16,7 +16,7 @@ call plug#end()
 
 " working directory
 " -----------------------------------
-cd ~/per/sea-snake-tree
+cd ~/per/vulkan_explained
 " -----------------------------------
 
 " encoding
@@ -32,6 +32,7 @@ set backspace=2
 set tabstop=4
 set shiftwidth=4
 set pastetoggle=<F2>
+set iskeyword-=_
 
 " ctrl-c is easier than esc
 inoremap <silent> <C-c> <ESC>
@@ -45,6 +46,9 @@ xnoremap p "_dP
 nmap <silent> <C-Enter> dd
 
 " I dont like this, and I dont mind using arrow keys
+nmap <silent> <S-Enter> <Nop>
+vmap <silent> <S-Enter> <Nop>
+
 nmap <silent> <S-Up> <Nop>
 nmap <silent> <S-Down> <Nop>
 nmap <silent> <S-Left> <Nop>
@@ -87,8 +91,8 @@ autocmd StdinReadPre * let s:std_in=1
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 
-" no auto indenting
-filetype indent off
+" some formatting stuff
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " remember line last opened on
 if has("autocmd")
