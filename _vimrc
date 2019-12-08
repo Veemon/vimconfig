@@ -14,11 +14,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
 
-" working directory
-" -----------------------------------
-cd ~/per/vulkan_explained
-" -----------------------------------
-
 " encoding
 set encoding=utf-8
 scriptencoding utf-8
@@ -31,13 +26,27 @@ set expandtab
 set backspace=2
 set tabstop=4
 set shiftwidth=4
-set pastetoggle=<F2>
 set iskeyword-=_
+set hlsearch
+set ignorecase
+set smartcase
+set nomagic
+
+" next search - center
+nnoremap <silent> n nzt
+nnoremap <silent> <S-n> <S-n>zt
+
+" undo highlighting
+nnoremap <silent> <ESC> :noh<CR><ESC>
 
 " ctrl-c is easier than esc
 inoremap <silent> <C-c> <ESC>
 nmap <silent> <C-c> <ESC>
 vmap <silent> <C-c> <ESC>
+
+" delete no copy
+nnoremap <Del> v"_d
+vnoremap <Del> "_d
 
 " paste is inconsistent in my opinion
 xnoremap p "_dP
@@ -65,8 +74,9 @@ nnoremap gp `[v`]
 " cd to file
 nnoremap <leader>cd :cd %:p:h<CR>
 
-" create new split
+" create new splits
 nmap <silent> <F1> :vnew<CR> <C-W>r
+nmap <silent> <F2> :vsp<CR>
 
 " use arrow keys for split navigation
 nmap <silent> <A-Up> :wincmd k<CR>
