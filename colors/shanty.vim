@@ -1,125 +1,85 @@
-command! Config edit! $MYVIMRC
-command! Reload so $MYVIMRC
+" @Veemon
+" Russel Demos
+" russelhughdemos@gmail.com
 
-" plugins
-call plug#begin('$VIM/vimfiles/bundle')
-Plug 'junegunn/vim-easy-align'
-Plug 'https://github.com/arcticicestudio/nord-vim'
-Plug 'itchyny/lightline.vim'
-Plug 'triglav/vim-visual-increment'
-Plug 'flazz/vim-colorschemes'
-Plug 'vim-scripts/ScrollColors'
-Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'scrooloose/nerdtree'
-Plug 'ctrlpvim/ctrlp.vim'
-call plug#end()
+hi clear
+syntax reset
+let g:colors_name = "shanty"
+set background=dark
+set t_Co=256
+hi Normal guifg=#e3dbcd ctermbg=NONE guibg=#0e1f24 gui=NONE
 
-" encoding
-set encoding=utf-8
-scriptencoding utf-8
-setglobal fileencoding=utf-8
-set fillchars=vert:\│
+hi EndOfBuffer guifg=#132b32 guibg=NONE
 
-" editor settings
-set nomousehide
-set expandtab
-set backspace=2
-set tabstop=4
-set shiftwidth=4
-set iskeyword-=_
-set hlsearch
-set ignorecase
-set smartcase
-set nomagic
+hi Type guifg=#e3dbcd guibg=NONE
+hi Identifier guifg=#86bdb3 guibg=NONE
+hi Keyword guifg=#88bab3 guibg=NONE
+hi Function guifg=#aee8c8 guibg=NONE
+hi Macro guifg=#f4eca6 guibg=NONE
+hi String guifg=#a3d4aa guibg=NONE
+hi Include guifg=#f4eca6 guibg=NONE
+hi Statement guifg=#88bab3 guibg=NONE
+hi Operator guifg=#88bab3 guibg=NONE
 
-" next search - center
-nnoremap <silent> n nzt
-nnoremap <silent> <S-n> <S-n>zt
+hi Todo guifg=#f79165 guibg=NONE
+hi Debug guifg=#f79165 guibg=NONE
+hi Fixme guifg=#f79165 guibg=NONE
 
-" undo highlighting
-nnoremap <silent> <ESC> :noh<CR><ESC>
+hi DiffText guifg=#86bdb3 guibg=NONE
+hi ErrorMsg guifg=#86bdb3 guibg=NONE
+hi WarningMsg guifg=#86bdb3 guibg=NONE
+hi PreProc guifg=#86bdb3 guibg=NONE
+hi Exception guifg=#86bdb3 guibg=NONE
+hi Error guifg=#86bdb3 guibg=NONE
+hi DiffDelete guifg=#86bdb3 guibg=NONE
+hi GitGutterDelete guifg=#86bdb3 guibg=NONE
+hi GitGutterChangeDelete guifg=#86bdb3 guibg=NONE
+hi cssIdentifier guifg=#86bdb3 guibg=NONE
+hi cssImportant guifg=#86bdb3 guibg=NONE
+hi PMenuSel guifg=#d4ebbc guibg=NONE
+hi Constant guifg=#d4ebbc guibg=NONE
+hi Repeat guifg=#d4ebbc guibg=NONE
+hi DiffAdd guifg=#d4ebbc guibg=NONE
+hi GitGutterAdd guifg=#d4ebbc guibg=NONE
+hi cssIncludeKeyword guifg=#d4ebbc guibg=NONE
+hi IncSearch guifg=#e9ff81 guibg=NONE
+hi Title guifg=#e9ff81 guibg=NONE
+hi PreCondit guifg=#e9ff81 guibg=NONE
+hi SpecialChar guifg=#e9ff81 guibg=NONE
+hi Conditional guifg=#e9ff81 guibg=NONE
+hi Special guifg=#e9ff81 guibg=NONE
+hi Label guifg=#e9ff81 guibg=NONE
+hi Delimiter guifg=#e9ff81 guibg=NONE
+hi Number guifg=#e9ff81 guibg=NONE
+hi CursorLineNR guifg=#e9ff81 guibg=NONE
+hi Define guifg=#e9ff81 guibg=NONE
+hi MoreMsg guifg=#e9ff81 guibg=NONE
+hi Tag guifg=#e9ff81 guibg=NONE
+hi MatchParen guifg=#e9ff81 guibg=NONE
+hi DiffChange guifg=#e9ff81 guibg=NONE
+hi GitGutterChange guifg=#e9ff81 guibg=NONE
+hi cssColor guifg=#e9ff81 guibg=NONE
+hi Directory guifg=#d1e8c7 guibg=NONE
+hi markdownLinkText guifg=#d1e8c7 guibg=NONE
+hi javaScriptBoolean guifg=#d1e8c7 guibg=NONE
+hi Storage guifg=#d1e8c7 guibg=NONE
+hi cssClassName guifg=#d1e8c7 guibg=NONE
+hi cssClassNameDot guifg=#d1e8c7 guibg=NONE
+hi cssAttr guifg=#ebd6bf guibg=NONE
 
-" ctrl-c is easier than esc
-inoremap <silent> <C-c> <ESC>
-nmap <silent> <C-c> <ESC>
-vmap <silent> <C-c> <ESC>
 
-" delete no copy
-nnoremap <Del> v"_d
-vnoremap <Del> "_d
-
-" paste is inconsistent in my opinion
-xnoremap p "_dP
-
-" white space killa R.I.P
-nmap <silent> <C-Enter> dd
-
-" I dont like this, and I dont mind using arrow keys
-nmap <silent> <S-Enter> <Nop>
-vmap <silent> <S-Enter> <Nop>
-
-nmap <silent> <S-Up> <Nop>
-nmap <silent> <S-Down> <Nop>
-nmap <silent> <S-Left> <Nop>
-nmap <silent> <S-Right> <Nop>
-
-vmap <silent> <S-Up> <Nop>
-vmap <silent> <S-Down> <Nop>
-vmap <silent> <S-Left> <Nop>
-vmap <silent> <S-Right> <Nop>
-
-" gv for pasted text
-nnoremap gp `[v`]
-
-" cd to file
-nnoremap <leader>cd :cd %:p:h<CR>
-
-" create new splits
-nmap <silent> <F1> :vnew<CR> <C-W>r
-nmap <silent> <F2> :vsp<CR>
-
-" use arrow keys for split navigation
-nmap <silent> <A-Up> :wincmd k<CR>
-nmap <silent> <A-Down> :wincmd j<CR>
-nmap <silent> <A-Left> :wincmd h<CR>
-nmap <silent> <A-Right> :wincmd l<CR>
-
-" resize horzontal split window
-nmap <silent> <C-Up> <C-W>-
-nmap <silent> <C-Down> <C-W>+
-nmap <silent> <C-Left> <C-W><
-nmap <silent> <C-Right> <C-W>>
-
-" easy align
-xmap <silent> ga <Plug>(EasyAlign)
-nmap <silent> ga <Plug>(EasyAlign)
-
-" nerd-tree
-nmap <silent> <C-n> :NERDTree<CR>
-autocmd StdinReadPre * let s:std_in=1
-" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
-
-" some formatting stuff
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-
-" remember line last opened on
-if has("autocmd")
-    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-endif
-
-" getting rid of gvim bloat
-set guioptions-=m  "menu bar
-set guioptions-=T  "toolbar
-set guioptions-=r  "scrollbar
-set guioptions-=L  "window snapping
-
-" aesthetics
-set guifont=Consolas:h14
-colorscheme shanty
-set laststatus=2
-let g:lightline = {
-    \ 'colorscheme': 'one',
-    \ }
-
+hi Pmenu guifg=#e3dbcd guibg=#4a6558
+hi SignColumn guibg=#132b32
+hi Title guifg=#e3dbcd
+hi LineNr guifg=#927b52 guibg=#132b32
+hi NonText guifg=#a1c4ac guibg=#132b32
+hi Comment guifg=#a1c4ac gui=italic
+hi SpecialComment guifg=#a1c4ac gui=italic guibg=#132b32
+hi CursorLine guibg=#4a6558
+hi TabLineFill gui=NONE guibg=#4a6558
+hi TabLine guifg=#927b52 guibg=#4a6558 gui=NONE
+hi StatusLine gui=bold guibg=#4a6558 guifg=#e3dbcd
+hi StatusLineNC gui=NONE guibg=#132b32 guifg=#e3dbcd
+hi Search guifg=#ffffff guibg=#2c5666
+hi VertSplit gui=NONE guifg=#4a6558 guibg=NONE
+hi Visual gui=NONE guibg=#4a6558
