@@ -16,7 +16,7 @@ echo | set /p dummy="[2/2] checking colorscheme --  "
 diff ./colors/shanty.vim %vimrc_path% > nul
 if "%errorlevel%" == "1" (
     echo updated
-    cp %vimrc_path% .\colors\shanty.vim
+    cp %vimcolor_path% .\colors\shanty.vim
 )
 echo.
 
