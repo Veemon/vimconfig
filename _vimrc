@@ -26,15 +26,15 @@ set expandtab
 set backspace=2
 set tabstop=4
 set shiftwidth=4
-set iskeyword-=_
+set iskeyword-=_,
 set hlsearch
 set ignorecase
 set smartcase
 set nomagic
 
 " next search - center
-nnoremap <silent> n nzt
-nnoremap <silent> <S-n> <S-n>zt
+nnoremap <silent> n nzt10<C-y>
+nnoremap <silent> <S-n> <S-n>zt10<C-y>
 
 " undo highlighting
 nnoremap <silent> <ESC> :noh<CR><ESC>
