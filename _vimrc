@@ -9,7 +9,6 @@ Plug 'itchyny/lightline.vim'
 Plug 'triglav/vim-visual-increment'
 Plug 'flazz/vim-colorschemes'
 Plug 'vim-scripts/ScrollColors'
-Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'scrooloose/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
@@ -26,11 +25,34 @@ set expandtab
 set backspace=2
 set tabstop=4
 set shiftwidth=4
-set iskeyword-=_,
+set iskeyword-=_
+set iskeyword-=,
 set hlsearch
 set ignorecase
 set smartcase
 set nomagic
+
+
+" set shell and build shortcut
+set shell=powershell.exe
+set shellcmdflag=
+set shellxquote=
+
+function! RunBuildScript()
+    echon '[build.bat] Running ...  '
+    let output = system(".\\build.bat")
+    if v:shell_error == 0
+        echon 'Success'
+    else
+        echon 'Failed :: '
+        echon v:shell_error
+        echo  '----------------------------------------------'
+        echo  output
+    endif
+endfunction
+
+nnoremap <silent> <C-b> :call RunBuildScript()<CR>
+
 
 " next search - center
 nnoremap <silent> n nzt10<C-y>
@@ -50,6 +72,7 @@ vnoremap <Del> "_d
 
 " paste is inconsistent in my opinion
 xnoremap p "_dP
+xnoremap P "_dP
 
 " white space killa R.I.P
 nmap <silent> <C-Enter> dd
