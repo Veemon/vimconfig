@@ -38,9 +38,14 @@ set shell=powershell.exe
 set shellcmdflag=
 set shellxquote=
 
-function! RunBuildScript()
-    echon '[build.bat] Running ...  '
-    let output = system(".\\build.bat")
+function! RunScript(script)
+    if !filereadable(a:script)
+        echon '[Error] No file ' a:script . ' in ' getcwd()
+        return
+    endif
+
+    echon '[' a:script . '] Running ...  '
+    let output = system(".\\" . a:script)
     if v:shell_error == 0
         echon 'Success'
     else
@@ -51,7 +56,7 @@ function! RunBuildScript()
     endif
 endfunction
 
-nnoremap <silent> <C-b> :call RunBuildScript()<CR>
+nnoremap <silent> <C-b> :call RunScript("build.bat")<CR>
 
 
 " next search - center
