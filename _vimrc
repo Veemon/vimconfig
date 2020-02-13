@@ -80,7 +80,7 @@ xnoremap p "_dP
 xnoremap P "_dP
 
 " white space killa R.I.P
-nmap <silent> <C-Enter> dd
+nmap <silent> <C-Enter> V"_d
 
 " I dont like this, and I dont mind using arrow keys
 nmap <silent> <S-Enter> <Nop>
@@ -98,6 +98,10 @@ vmap <silent> <S-Right> <Nop>
 
 " gv for pasted text
 nnoremap gp `[v`]
+
+" hold onto visual selection
+vnoremap < <gv
+vnoremap > >gv
 
 " cd to file
 nnoremap <leader>cd :cd %:p:h<CR>
@@ -144,10 +148,25 @@ set guioptions-=r  "scrollbar
 set guioptions-=L  "window snapping
 
 " aesthetics
-set guifont=Consolas:h14
+"set guifont=Consolas:h15
 colorscheme shanty
 set laststatus=2
 let g:lightline = {
     \ 'colorscheme': 'one',
     \ }
 
+function! UpdateFont(val)
+    if !exists('g:fontSize')
+        echo 'doesnt exist: '
+        let g:fontSize = 15
+    endif
+    if a:val != 0
+        let g:fontSize = g:fontSize + a:val
+    endif
+    silent! execute "set guifont=Consolas:h".g:fontSize
+endfunction
+
+autocmd VimEnter * UpdateFont(0)
+
+nnoremap <C-x> :call UpdateFont(1)<CR>:echo 'Setting font size:' g:fontSize<CR>
+nnoremap <C-z> :call UpdateFont(-1)<CR>:echo 'Setting font size:' g:fontSize<CR>
