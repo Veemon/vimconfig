@@ -156,17 +156,14 @@ let g:lightline = {
     \ }
 
 function! UpdateFont(val)
-    if !exists('g:fontSize')
-        echo 'doesnt exist: '
-        let g:fontSize = 15
-    endif
+    let g:fontSize = get(g:, 'fontSize', '15')
     if a:val != 0
         let g:fontSize = g:fontSize + a:val
     endif
     silent! execute "set guifont=Consolas:h".g:fontSize
 endfunction
 
-autocmd VimEnter * UpdateFont(0)
+autocmd VimEnter * call UpdateFont(0)
 
 nnoremap <C-x> :call UpdateFont(1)<CR>:echo 'Setting font size:' g:fontSize<CR>
 nnoremap <C-z> :call UpdateFont(-1)<CR>:echo 'Setting font size:' g:fontSize<CR>
