@@ -71,6 +71,9 @@ inoremap <silent> <C-c> <ESC>
 nmap <silent> <C-c> <ESC>
 vmap <silent> <C-c> <ESC>
 
+" change no copy
+vnoremap c "_c
+
 " delete no copy
 nnoremap <Del> v"_d
 vnoremap <Del> "_d
@@ -135,6 +138,12 @@ let NERDTreeDirArrows = 1
 
 " some formatting stuff
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" format shaders like c
+augroup filetypedetect
+    au! BufRead,BufNewFile *.frag setfiletype c
+    au! BufRead,BufNewFile *.vert setfiletype c
+augroup END
 
 " remember line last opened on
 if has("autocmd")
