@@ -147,7 +147,7 @@ augroup END
 
 " remember line last opened on
 if has("autocmd")
-    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\" zz" | endif
 endif
 
 " getting rid of gvim bloat
