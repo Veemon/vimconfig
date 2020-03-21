@@ -155,6 +155,7 @@ set guioptions-=m  "menu bar
 set guioptions-=T  "toolbar
 set guioptions-=r  "scrollbar
 set guioptions-=L  "window snapping
+set guioptions+=k  "dodging the window unhinging
 
 " aesthetics
 "set guifont=Consolas:h15
