@@ -7,8 +7,7 @@ syntax reset
 let g:colors_name = "shanty"
 set background=dark
 set t_Co=256
-" hi Normal guifg=#e3dbcd ctermbg=NONE guibg=#0e1f24 gui=NONE
-hi Normal guifg=#ede2d5 ctermbg=NONE guibg=#132831 gui=NONE
+hi Normal guifg=#cccccc ctermbg=NONE guibg=#132831 gui=NONE
 
 hi EndOfBuffer guifg=#132b32 guibg=NONE
 
