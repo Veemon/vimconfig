@@ -125,6 +125,10 @@ nmap <silent> <C-Down> <C-W>+
 nmap <silent> <C-Left> <C-W><
 nmap <silent> <C-Right> <C-W>>
 
+" move horizontal splits
+nmap <silent> <S-Left> :wincmd h<CR><C-W>x
+nmap <silent> <S-Right> <C-W>x:wincmd l<CR>
+
 " easy align
 xmap <silent> ga <Plug>(EasyAlign)
 nmap <silent> ga <Plug>(EasyAlign)
