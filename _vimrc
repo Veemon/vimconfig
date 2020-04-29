@@ -112,6 +112,7 @@ nnoremap <leader>cd :cd %:p:h<CR>
 " create new splits
 nmap <silent> <F1> :vnew<CR> <C-W>r
 nmap <silent> <F2> :vsp<CR>
+nmap <silent> <F3> :tabnew<CR>:NERDTree<CR>
 
 " use arrow keys for split navigation
 nmap <silent> <A-Up> :wincmd k<CR>
