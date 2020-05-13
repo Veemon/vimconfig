@@ -11,6 +11,7 @@ Plug 'flazz/vim-colorschemes'
 Plug 'vim-scripts/ScrollColors'
 Plug 'scrooloose/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'sheerun/vim-polyglot'
 call plug#end()
 
 " encoding
@@ -35,8 +36,8 @@ set nomagic
 
 " set shell and build shortcut
 set shell=powershell.exe
-set shellcmdflag=
-set shellxquote=
+set shellcmdflag=                   " comment these lines out
+set shellxquote=                    " for running vim-plug commands
 
 function! RunScript(script)
     if !filereadable(a:script)
@@ -137,7 +138,6 @@ nmap <silent> ga <Plug>(EasyAlign)
 " nerd-tree
 nmap <silent> <C-n> :NERDTree<CR>
 autocmd StdinReadPre * let s:std_in=1
-" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 
@@ -163,7 +163,6 @@ set guioptions-=L  "window snapping
 set guioptions+=k  "dodging the window unhinging
 
 " aesthetics
-"set guifont=Consolas:h15
 colorscheme shanty
 set laststatus=2
 let g:lightline = {
