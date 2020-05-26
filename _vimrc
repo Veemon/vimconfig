@@ -79,9 +79,11 @@ vnoremap c "_c
 nnoremap <Del> v"_d
 vnoremap <Del> "_d
 
-" paste is inconsistent in my opinion
-xnoremap p "_dP
-xnoremap P "_dP
+" making paste easier
+nmap p :pu<CR>
+nmap P :pu!<CR>
+vmap p "_dp
+vmap P "_dP
 
 " white space killa R.I.P
 nmap <silent> <C-Enter> V"_d
