@@ -80,12 +80,10 @@ nnoremap <Del> v"_d
 vnoremap <Del> "_d
 
 " making paste easier
-nnoremap <A-p> p
-nnoremap <A-P> P
-nnoremap p :pu<CR>
-nnoremap P :pu!<CR>
-vnoremap p "_dP
-vnoremap P "_dP
+nnoremap <A-p> :pu<CR>
+nnoremap <A-P> :pu!<CR>
+vnoremap <A-p> "_dP
+vnoremap <A-P> "_dP
 
 " white space killa R.I.P
 nmap <silent> <C-Enter> V"_d
