@@ -4,14 +4,11 @@ command! Reload so $MYVIMRC
 " plugins
 call plug#begin('$VIM/vimfiles/bundle')
 Plug 'junegunn/vim-easy-align'
-Plug 'https://github.com/arcticicestudio/nord-vim'
 Plug 'itchyny/lightline.vim'
 Plug 'triglav/vim-visual-increment'
 Plug 'flazz/vim-colorschemes'
 Plug 'vim-scripts/ScrollColors'
 Plug 'scrooloose/nerdtree'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'sheerun/vim-polyglot'
 call plug#end()
 
 " encoding
@@ -34,6 +31,11 @@ set smartcase
 set nomagic
 
 
+" default sizing
+autocmd GUIEnter * set lines=56 columns=142
+autocmd GUIEnter * winpos 8 35
+
+
 " set shell and build shortcut
 set shell=powershell.exe
 set shellcmdflag=                   " comment these lines out
@@ -45,12 +47,12 @@ function! RunScript(script)
         return
     endif
 
-    echon '[' a:script . '] Running ...  '
+    echon '[' a:script . ']  Running ...  '
     let output = system(".\\" . a:script)
     if v:shell_error == 0
-        echon 'Success'
+        echon 'Success                       ' getcwd()
     else
-        echon 'Failed :: '
+        echon 'Failed  :: '
         echon v:shell_error
         echo  '----------------------------------------------'
         echo  output
@@ -133,6 +135,9 @@ nmap <silent> <C-Right> <C-W>>
 nmap <silent> <S-Left> :wincmd h<CR><C-W>x
 nmap <silent> <S-Right> <C-W>x:wincmd l<CR>
 
+" easier insert navigation
+inoremap <silent> <C-Right> <C-o>e<C-o>l
+
 " easy align
 xmap <silent> ga <Plug>(EasyAlign)
 nmap <silent> ga <Plug>(EasyAlign)
@@ -153,9 +158,7 @@ augroup filetypedetect
 augroup END
 
 " remember line last opened on
-if has("autocmd")
-    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\" zz" | endif
-endif
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\" zz" | endif
 
 " getting rid of gvim bloat
 set guioptions-=m  "menu bar
@@ -183,3 +186,5 @@ autocmd VimEnter * call UpdateFont(0)
 
 nnoremap <C-x> :call UpdateFont(1)<CR>:echo 'Setting font size:' g:fontSize<CR>
 nnoremap <C-z> :call UpdateFont(-1)<CR>:echo 'Setting font size:' g:fontSize<CR>
+
+
