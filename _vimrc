@@ -104,6 +104,20 @@ vmap <silent> <S-Down> <Nop>
 vmap <silent> <S-Left> <Nop>
 vmap <silent> <S-Right> <Nop>
 
+" the thinkpad (tm) experience (tm^2)
+nmap <silent> <S-PageUp> <Nop>
+imap <silent> <S-PageUp> <Nop>
+vmap <silent> <S-PageUp> <Nop>
+nmap <silent> <S-PageDown> <Nop>
+imap <silent> <S-PageDown> <Nop>
+vmap <silent> <S-PageDown> <Nop>
+nmap <silent> <PageUp> <Nop>
+imap <silent> <PageUp> <Nop>
+vmap <silent> <PageUp> <Nop>
+nmap <silent> <PageDown> <Nop>
+imap <silent> <PageDown> <Nop>
+vmap <silent> <PageDown> <Nop>
+
 " gv for pasted text
 nnoremap gp `[v`]
 
@@ -151,11 +165,41 @@ let NERDTreeDirArrows = 1
 " some formatting stuff
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
+" switch to header/implementation
+function! SwitchFile()
+    let file_path=@%
+
+    let parent=fnamemodify(file_path, ':h')
+    let file_search=fnamemodify(file_path, ':t:r') . ".*"
+    let matches=split(globpath(parent, file_search),"\n")
+
+    let target=""
+    for match in matches
+        if file_path != match
+            let target=match
+            break
+        endif
+    endfor
+
+    if empty(target)
+        echo "No matching files."
+        return
+    endif
+
+    execute ":e " . target
+
+endfunction
+
+nnoremap <C-h> :call SwitchFile()<CR>
+
 " format shaders like c
 augroup filetypedetect
     au! BufRead,BufNewFile *.frag setfiletype c
     au! BufRead,BufNewFile *.vert setfiletype c
 augroup END
+
+" disable weird macro indenting
+setlocal cinkeys-=0#
 
 " remember line last opened on
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\" zz" | endif
