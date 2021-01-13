@@ -223,7 +223,7 @@ function! UpdateFont(val)
     if a:val != 0
         let g:fontSize = g:fontSize + a:val
     endif
-    silent! execute "set guifont=Consolas:h".g:fontSize
+    silent! execute "set guifont=Consolas:h" . g:fontSize
 endfunction
 
 autocmd VimEnter * call UpdateFont(0)
