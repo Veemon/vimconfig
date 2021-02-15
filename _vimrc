@@ -11,6 +11,11 @@ Plug 'vim-scripts/ScrollColors'
 Plug 'scrooloose/nerdtree'
 call plug#end()
 
+" this is a thing?
+if (has("termguicolors"))
+    set termguicolors
+endif
+
 " encoding
 set encoding=utf-8
 scriptencoding utf-8
@@ -38,8 +43,8 @@ autocmd GUIEnter * winpos 8 35
 
 " set shell and build shortcut
 set shell=powershell.exe
-set shellcmdflag=                   " comment these lines out
-set shellxquote=                    " for running vim-plug commands
+" set shellcmdflag=                   " comment these lines out
+" set shellxquote=                    " for running vim-plug commands
 
 function! RunScript(script)
     if !filereadable(a:script)
@@ -173,9 +178,15 @@ function! SwitchFile()
     let file_search=fnamemodify(file_path, ':t:r') . ".*"
     let matches=split(globpath(parent, file_search),"\n")
 
+    " remove abbrev for cwd
+    if parent == "\."
+        let matches=map(matches, "fnamemodify(v:val, ':t')")
+    endif
+
     let target=""
     for match in matches
-        if file_path != match
+        " search for non-current file
+        if file_path !=# match
             let target=match
             break
         endif
@@ -190,7 +201,7 @@ function! SwitchFile()
 
 endfunction
 
-nnoremap <C-h> :call SwitchFile()<CR>
+nmap <C-h> :call SwitchFile()<CR>
 
 " format shaders like c
 augroup filetypedetect
