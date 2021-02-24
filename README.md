@@ -1,4 +1,7 @@
-# vimconfig
+<br>
+<p align="center">
+  <img src=res/demo_i_guess.PNG/ width="">
+</p>
 
 ## GVim
 1) get [vim](https://www.vim.org/download.php)
