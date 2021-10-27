@@ -9,6 +9,7 @@ set background=dark
 set t_Co=256
 
 hi Normal guifg=#ede2d5 ctermbg=NONE guibg=#182930 gui=NONE
+hi Cursor guifg=#000000 ctermbg=NONE guibg=#fcad03
 
 hi EndOfBuffer guifg=#132b32 guibg=NONE
 
@@ -62,7 +63,7 @@ hi TabLineFill gui=NONE guibg=#405661
 hi TabLine guifg=#927b52 guibg=#405661 gui=NONE
 hi StatusLine gui=bold guibg=#405661 guifg=#ede2d5
 hi StatusLineNC gui=NONE guibg=#132b32 guifg=#ede2d5
-hi Search guifg=#000000 guibg=#ffffff
+hi Search guifg=#333333 guibg=#ffffff
 hi VertSplit gui=NONE guifg=#405661 guibg=NONE
 hi Visual gui=NONE guibg=#405661
 
@@ -77,7 +78,7 @@ hi GitGutterChangeDelete guifg=#82bab8 guibg=NONE
 hi PMenuSel guifg=#d4ebbc guibg=NONE
 hi DiffAdd guifg=#d4ebbc guibg=NONE
 hi GitGutterAdd guifg=#d4ebbc guibg=NONE
-hi IncSearch guifg=#b2ede2 guibg=NONE
+hi IncSearch guifg=#333333 guibg=NONE
 hi Title guifg=#b2ede2 guibg=NONE
 hi CursorLineNR guifg=#b2ede2 guibg=NONE
 hi MoreMsg guifg=#b2ede2 guibg=NONE

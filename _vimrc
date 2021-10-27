@@ -221,6 +221,7 @@ set guioptions-=T  "toolbar
 set guioptions-=r  "scrollbar
 set guioptions-=L  "window snapping
 set guioptions+=k  "dodging the window unhinging
+set guicursor+=a:blinkon0 "disable the damn cursor blink
 
 " aesthetics
 colorscheme shanty
