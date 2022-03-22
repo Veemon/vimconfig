@@ -37,8 +37,8 @@ set nomagic
 
 
 " default sizing
-autocmd GUIEnter * set lines=56 columns=142
-autocmd GUIEnter * winpos 8 35
+autocmd GUIEnter * set lines=40 columns=150
+autocmd GUIEnter * winpos 0 35
 
 
 " set shell and build shortcut
@@ -205,8 +205,13 @@ nmap <C-h> :call SwitchFile()<CR>
 
 " format shaders like c
 augroup filetypedetect
-    au! BufRead,BufNewFile *.frag setfiletype c
+    au! BufRead,BufNewFile *.geo  setfiletype c
     au! BufRead,BufNewFile *.vert setfiletype c
+    au! BufRead,BufNewFile *.frag setfiletype c
+
+    au! BufRead,BufNewFile *.gs  setfiletype c
+    au! BufRead,BufNewFile *.vs  setfiletype c
+    au! BufRead,BufNewFile *.fs  setfiletype c
 augroup END
 
 " disable weird macro indenting
