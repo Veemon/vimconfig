@@ -37,12 +37,12 @@ set nomagic
 
 
 " default sizing
-autocmd GUIEnter * set lines=40 columns=150
-autocmd GUIEnter * winpos 0 35
+autocmd GUIEnter * winpos 160 22
+autocmd GUIEnter * set lines=62 columns=204
 
 
 " set shell and build shortcut
-set shell=powershell.exe
+" set shell=powershell.exe
 " set shellcmdflag=                   " comment these lines out
 " set shellxquote=                    " for running vim-plug commands
 
