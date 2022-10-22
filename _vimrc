@@ -9,6 +9,7 @@ Plug 'triglav/vim-visual-increment'
 Plug 'flazz/vim-colorschemes'
 Plug 'vim-scripts/ScrollColors'
 Plug 'scrooloose/nerdtree'
+Plug 'justinmk/vim-sneak'
 call plug#end()
 
 " this is a thing?
@@ -38,7 +39,7 @@ set nomagic
 
 " default sizing
 autocmd GUIEnter * winpos 160 22
-autocmd GUIEnter * set lines=62 columns=204
+autocmd GUIEnter * set lines=42 columns=148
 
 
 " set shell and build shortcut
