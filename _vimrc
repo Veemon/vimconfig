@@ -232,10 +232,10 @@ set guioptions+=k  "dodging the window unhinging
 set guicursor+=a:blinkon0 "disable the damn cursor blink
 
 " aesthetics
-colorscheme shanty
+colorscheme shantyv2
 set laststatus=2
 let g:lightline = {
-    \ 'colorscheme': 'one',
+    \ 'colorscheme': 'shantyline',
     \ }
 
 function! PickFont()
