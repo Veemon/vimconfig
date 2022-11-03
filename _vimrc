@@ -4,8 +4,8 @@ command! Reload so $MYVIMRC
 " plugins
 call plug#begin('$VIM/vimfiles/bundle')
 Plug 'junegunn/vim-easy-align'
-Plug 'itchyny/lightline.vim'
 Plug 'triglav/vim-visual-increment'
+Plug 'itchyny/lightline.vim'
 Plug 'flazz/vim-colorschemes'
 Plug 'vim-scripts/ScrollColors'
 Plug 'scrooloose/nerdtree'
@@ -19,8 +19,10 @@ endif
 
 " encoding
 set encoding=utf-8
+set fileencodings=ucs-bom,utf8,latin1
+set fileencoding=utf-8
 scriptencoding utf-8
-setglobal fileencoding=utf-8
+
 set fillchars=vert:\│
 
 " editor settings
@@ -235,6 +237,13 @@ set laststatus=2
 let g:lightline = {
     \ 'colorscheme': 'one',
     \ }
+
+function! PickFont()
+    silent! execute "set guifont=*"
+    echo "Chosen Font \n----------------------"
+    execute "set guifont?"
+    echo ""
+endfunction
 
 function! UpdateFont(val)
     let g:fontSize = get(g:, 'fontSize', '15')
