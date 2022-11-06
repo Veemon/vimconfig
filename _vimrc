@@ -1,5 +1,6 @@
 command! Config edit! $MYVIMRC
 command! Reload so $MYVIMRC
+command! Color execute "e C:\\Program Files (x86)\\Vim\\vimfiles\\colors\\shantyv2.vim"
 
 " plugins
 call plug#begin('$VIM/vimfiles/bundle')
@@ -90,6 +91,9 @@ nnoremap <Del> v"_d
 vnoremap <Del> "_d
 
 " making paste easier
+nnoremap y "+y
+vnoremap y "+y
+
 nnoremap <A-p> :pu<CR>
 nnoremap <A-P> :pu!<CR>
 vnoremap <A-p> "_dP

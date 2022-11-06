@@ -59,11 +59,11 @@ exe 'hi Statement             guifg=' .s:cyan.         ' guibg=NONE'
 exe 'hi Operator              guifg=' .s:cyan.         ' guibg=NONE'
 exe 'hi Define                guifg=' .s:light_orange. ' guibg=NONE'
 exe 'hi Constant              guifg=' .s:zest_green.   ' guibg=NONE'
-exe 'hi Label                 guifg=' .s:debug.    ' guibg=NONE'
+exe 'hi Label                 guifg=' .s:aqua.         ' guibg=NONE'
 exe 'hi Delimiter             guifg=' .s:light_grey.   ' guibg=NONE'
 exe 'hi Number                guifg=' .s:orange.       ' guibg=NONE'
 exe 'hi Special               guifg=' .s:orange.       ' guibg=NONE'
-exe 'hi Conditional           guifg=' .s:faint_red.    ' guibg=NONE'
+exe 'hi Conditional           guifg=' .s:cyan.         ' guibg=NONE'
 
 exe 'hi Title                 guifg=' .s:faint_orange
 exe 'hi Tag                   guifg=' .s:pale_cyan.  ' guibg=NONE'
