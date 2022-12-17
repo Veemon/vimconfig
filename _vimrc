@@ -11,6 +11,10 @@ Plug 'flazz/vim-colorschemes'
 Plug 'vim-scripts/ScrollColors'
 Plug 'scrooloose/nerdtree'
 Plug 'justinmk/vim-sneak'
+" -- the pain is eternal
+Plug 'othree/html5.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'evanleck/vim-svelte', {'branch': 'main'}
 call plug#end()
 
 " this is a thing?
@@ -169,6 +173,7 @@ xmap <silent> ga <Plug>(EasyAlign)
 nmap <silent> ga <Plug>(EasyAlign)
 
 " nerd-tree
+let NERDTreeShowHidden=1
 nmap <silent> <C-n> :NERDTree<CR>
 autocmd StdinReadPre * let s:std_in=1
 let NERDTreeMinimalUI = 1
@@ -222,7 +227,7 @@ augroup filetypedetect
 augroup END
 
 " disable weird macro indenting
-setlocal cinkeys-=0#
+set cinkeys=0{,0},0),:,!^F,o,O,e
 
 " remember line last opened on
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\" zz" | endif
