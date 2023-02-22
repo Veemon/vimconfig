@@ -2,6 +2,11 @@ command! Config edit! $MYVIMRC
 command! Reload so $MYVIMRC
 command! Color execute "e C:\\Program Files (x86)\\Vim\\vimfiles\\colors\\shantyv2.vim"
 
+" see updateFontSize for more info
+let g:lockFontSize=1
+command! Lock let g:lockFontSize=1
+command! Unlock let g:lockFontSize=0
+
 " plugins
 call plug#begin('$VIM/vimfiles/bundle')
 Plug 'junegunn/vim-easy-align'
@@ -229,6 +234,10 @@ augroup END
 " disable weird macro indenting
 set cinkeys=0{,0},0),:,!^F,o,O,e
 
+" disable weird label indenting
+set cinoptions+=L0
+set cinoptions+=g0
+
 " remember line last opened on
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\" zz" | endif
 
@@ -254,7 +263,15 @@ function! PickFont()
     echo ""
 endfunction
 
+function! InitFont()
+    let g:fontSize = get(g:, 'fontSize', '15')
+    silent! execute "set guifont=Consolas:h" . g:fontSize
+endfunction
+
 function! UpdateFont(val)
+    if g:lockFontSize == 1
+        return
+    endif
     let g:fontSize = get(g:, 'fontSize', '15')
     if a:val != 0
         let g:fontSize = g:fontSize + a:val
@@ -262,9 +279,17 @@ function! UpdateFont(val)
     silent! execute "set guifont=Consolas:h" . g:fontSize
 endfunction
 
-autocmd VimEnter * call UpdateFont(0)
+function! LogFontSize()
+    if g:lockFontSize == 1
+        echo "Font Size Locked -- Try :Unlock"
+        return
+    endif
+    echo 'Setting font size:' g:fontSize
+endfunction
 
-nnoremap <C-x> :call UpdateFont(1)<CR>:echo 'Setting font size:' g:fontSize<CR>
-nnoremap <C-z> :call UpdateFont(-1)<CR>:echo 'Setting font size:' g:fontSize<CR>
+autocmd VimEnter * call InitFont()
+
+nnoremap <C-x> :call UpdateFont(1)<CR>:call LogFontSize()<CR>
+nnoremap <C-z> :call UpdateFont(-1)<CR>:call LogFontSize()<CR>
 
 

@@ -9,7 +9,7 @@ set vimrc_src="./_vimrc"
 set vim_colors_src="./colors/shantyv2.vim"
 set lightline_colors_src="./colorscheme/shantyline.vim"
 
-echo | set /p dummy="[1/3] checking vimrc" 
+echo | set /p dummy="[1/3] checking vimrc " 
 diff %vimrc_src% %vimrc_path% > nul
 if "%errorlevel%" == "1" (
     echo updated
@@ -17,7 +17,7 @@ if "%errorlevel%" == "1" (
 )
 echo.
 
-echo | set /p dummy="[2/3] checking vim colors" 
+echo | set /p dummy="[2/3] checking vim colors " 
 diff %vim_colors_src% %vim_colors_path% > nul
 if "%errorlevel%" == "1" (
     echo updated
@@ -25,7 +25,7 @@ if "%errorlevel%" == "1" (
 )
 echo.
 
-echo | set /p dummy="[3/3] checking lightline colors" 
+echo | set /p dummy="[3/3] checking lightline colors " 
 diff %lightline_colors_src% %lightline_colors_path% > nul
 if "%errorlevel%" == "1" (
     echo updated
