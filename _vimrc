@@ -20,6 +20,10 @@ Plug 'justinmk/vim-sneak'
 Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
+Plug 'ap/vim-css-color'
+Plug 'leafgarland/typescript-vim'
+" -- and the suffering endless
+Plug 'hdima/python-syntax'
 call plug#end()
 
 " this is a thing?
@@ -231,6 +235,11 @@ augroup filetypedetect
     au! BufRead,BufNewFile *.fs  setfiletype c
 augroup END
 
+" format tsx
+augroup filetypedetect
+    au! BufRead,BufNewFile *.tsx setfiletype typescript
+augroup END
+
 " disable weird macro indenting
 set cinkeys=0{,0},0),:,!^F,o,O,e
 
@@ -255,6 +264,7 @@ set laststatus=2
 let g:lightline = {
     \ 'colorscheme': 'shantyline',
     \ }
+set noshowmode
 
 function! PickFont()
     silent! execute "set guifont=*"
@@ -291,5 +301,7 @@ autocmd VimEnter * call InitFont()
 
 nnoremap <C-x> :call UpdateFont(1)<CR>:call LogFontSize()<CR>
 nnoremap <C-z> :call UpdateFont(-1)<CR>:call LogFontSize()<CR>
+
+
 
 
