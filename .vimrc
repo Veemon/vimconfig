@@ -33,6 +33,7 @@ Plug 'ap/vim-css-color'
 Plug 'leafgarland/typescript-vim'
 " -- and the suffering endless
 Plug 'hdima/python-syntax'
+Plug 'JuliaEditorSupport/julia-vim'
 call plug#end()
 
 " this is a thing?
